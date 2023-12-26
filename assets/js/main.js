@@ -163,23 +163,31 @@ async function insertOrder(order) {
  }
 }
 
-// Inside the `handle_buyOrder` function, call the function to insert a new row into the `orders` table
 async function handle_buyOrder() {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
     return;
  }
 
- // Insert the order into the Supabase database
- await insertOrder({
-    items: itemsAdded,
-    total: total,
+ const response = await fetch('https://your-serverless-function-url.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      items: itemsAdded,
+      total: total,
+    }),
  });
 
- const cartContent = cart.querySelector(".cart-content");
- cartContent.innerHTML = "";
- alert("Your Order is Placed Successfully :)");
- itemsAdded = [];
+ if (response.ok) {
+    const cartContent = cart.querySelector(".cart-content");
+    cartContent.innerHTML = "";
+    alert("Your Order is Placed Successfully :)");
+    itemsAdded = [];
 
- update();
+    update();
+ } else {
+    alert('Error placing the order. Please try again.');
+ }
 }
