@@ -1,3 +1,14 @@
+// Set up your Supabase project
+const SUPABASE_URL = 'https://dmetwmpvrtkaigrmxubc.supabase.co';
+const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtZXR3bXB2cnRrYWlncm14dWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM1Njk2ODIsImV4cCI6MjAxOTE0NTY4Mn0.smS3iIzKfDRb-uyxhEaqapBiWwtJ7LTiUd9JZ2t8XkM';
+
+// Import the Supabase client library
+import { createClient } from '@supabase/supabase-js';
+
+// Connect to your Supabase project
+const supabase = createClient(SUPABASE_URL, SUPABASE_API_KEY);
+
+
 // OPEN & CLOSE CART
 const cartIcon = document.querySelector("#cart-icon");
 const cart = document.querySelector(".cart");
@@ -109,18 +120,6 @@ function handle_changeItemQuantity() {
   update();
 }
 
-function handle_buyOrder() {
-  if (itemsAdded.length <= 0) {
-    alert("There is No Order to Place Yet! \nPlease Make an Order first.");
-    return;
-  }
-  const cartContent = cart.querySelector(".cart-content");
-  cartContent.innerHTML = "";
-  alert("Your Order is Placed Successfully :)");
-  itemsAdded = [];
-
-  update();
-}
 
 // =========== UPDATE & RERENDER FUNCTIONS =========
 function updateTotal() {
@@ -155,4 +154,43 @@ function CartBoxComponent(title, price, imgSrc) {
         <!-- REMOVE CART  -->
         <i class='bx bxs-trash-alt cart-remove'></i>
     </div>`;
+}
+
+
+// Create a function to insert a new row into the `orders` table
+async function insertOrder(order) {
+ try {
+    const { data, error } = await supabase
+      .from('orders')
+      .insert([order]);
+
+    if (error) {
+      throw error;
+    }
+
+    console.log('Order inserted successfully:', data);
+ } catch (error) {
+    console.error('Error inserting order:', error);
+ }
+}
+
+// Inside the `handle_buyOrder` function, call the function to insert a new row into the `orders` table
+async function handle_buyOrder() {
+ if (itemsAdded.length <= 0) {
+    alert("There is No Order to Place Yet! \nPlease Make an Order first.");
+    return;
+ }
+
+ // Insert the order into the Supabase database
+ await insertOrder({
+    items: itemsAdded,
+    total: total,
+ });
+
+ const cartContent = cart.querySelector(".cart-content");
+ cartContent.innerHTML = "";
+ alert("Your Order is Placed Successfully :)");
+ itemsAdded = [];
+
+ update();
 }
