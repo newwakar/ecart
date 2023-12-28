@@ -151,7 +151,7 @@ async function insertOrder(order) {
  try {
     const { data, error } = await supabase
       .from('orders')
-      .insert([order]);
+      .insert([orderData]);
 
     if (error) {
       throw error;
