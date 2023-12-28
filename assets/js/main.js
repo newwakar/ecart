@@ -163,8 +163,6 @@ async function insertOrder(order) {
  }
 }
 
-handle_buyOrder(updateTotal());
-
 async function handle_buyOrder(total) {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
