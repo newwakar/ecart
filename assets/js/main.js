@@ -146,13 +146,15 @@ function CartBoxComponent(title, price, imgSrc) {
 }
 
 
-async function handle_buyOrder(total) {
- if (itemsAdded.length <= 0) {
+async function handle_buyOrder() {
+  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
     return;
- }
+  }
 
- const response = await fetch('https://wakarecart.vercel.app/assets/api/store-order.js', {
+  const total = document.querySelector(".total-price").innerHTML;
+
+  const response = await fetch('http://https://wakarecart.vercel.app', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -160,18 +162,18 @@ async function handle_buyOrder(total) {
     body: JSON.stringify({
       items: itemsAdded,
       total: total,
-
     }),
- });
+  });
 
- if (response.ok) {
-    const cartContent = cart.querySelector(".cart-content");
+  if (response.ok) {
+    const cartContent = document.querySelector(".cart-content");
     cartContent.innerHTML = "";
     alert("Your Order is Placed Successfully :)");
     itemsAdded = [];
 
     update();
- } else {
+  } else {
     alert('Error placing the order. Please try again.');
- }
+  }
 }
+
