@@ -175,8 +175,7 @@ async function handle_buyOrder(total) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      items: itemsAdded,
-      total: total,
+      orderData: itemsAdded
     }),
  });
 
