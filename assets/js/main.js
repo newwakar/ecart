@@ -162,6 +162,9 @@ async function insertOrder(order) {
     console.error('Error inserting order:', error);
  }
 }
+
+handle_buyOrder(updateTotal());
+
 async function handle_buyOrder(total) {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
@@ -190,4 +193,3 @@ async function handle_buyOrder(total) {
     alert('Error placing the order. Please try again.');
  }
 }
-handle_buyOrder(updateTotal());
