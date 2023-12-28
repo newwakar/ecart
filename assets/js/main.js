@@ -169,7 +169,7 @@ async function handle_buyOrder(total) {
     return;
  }
 
- const response = await fetch('https://wakarecart.vercel.app/assets/api/store-order.js', {
+ const response = await fetch('/api/store-order.js', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
