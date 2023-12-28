@@ -162,17 +162,6 @@ async function insertOrder(order) {
     console.error('Error inserting order:', error);
  }
 }
-function updateTotal() {
- let total = 0;
-
- for (let item of itemsAdded) {
-    total += item.price * item.quantity;
- }
-
- totalElement.innerHTML = "$" + total.toFixed(2);
-
- return total;
-}
 async function handle_buyOrder(total) {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
