@@ -154,7 +154,7 @@ async function handle_buyOrder() {
 
   const total = document.querySelector(".total-price").innerHTML;
 
-  const response = await fetch('http://https://wakarecart.vercel.app', {
+  const response = await fetch('https://wakarecart.vercel.app/your-webhook-endpoint', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
