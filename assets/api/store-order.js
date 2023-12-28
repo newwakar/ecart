@@ -1,3 +1,4 @@
+import { supabase } from '../../../lib/initSupabase';
 
 const webhook = async (req, res) => {
  if (req.method === 'POST') {
@@ -18,3 +19,5 @@ const webhook = async (req, res) => {
 };
 
 export default webhook;
+
+
