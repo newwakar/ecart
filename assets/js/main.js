@@ -146,23 +146,6 @@ function CartBoxComponent(title, price, imgSrc) {
 }
 
 
-// Create a function to insert a new row into the `orders` table
-async function insertOrder(order) {
- try {
-    const { data, error } = await supabase
-      .from('orders')
-      .insert([orderData]);
-
-    if (error) {
-      throw error;
-    }
-
-    console.log('Order inserted successfully:', data);
- } catch (error) {
-    console.error('Error inserting order:', error);
- }
-}
-
 async function handle_buyOrder(total) {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
