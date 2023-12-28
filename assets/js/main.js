@@ -162,8 +162,18 @@ async function insertOrder(order) {
     console.error('Error inserting order:', error);
  }
 }
+function updateTotal() {
+ let total = 0;
 
-async function handle_buyOrder() {
+ for (let item of itemsAdded) {
+    total += item.price * item.quantity;
+ }
+
+ totalElement.innerHTML = "$" + total.toFixed(2);
+
+ return total;
+}
+async function handle_buyOrder(total) {
  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
     return;
@@ -191,3 +201,4 @@ async function handle_buyOrder() {
     alert('Error placing the order. Please try again.');
  }
 }
+handle_buyOrder(updateTotal());
