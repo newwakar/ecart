@@ -11,9 +11,13 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- styles  -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    //or
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+  const supabase = createClient('https://dmetwmpvrtkaigrmxubc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtZXR3bXB2cnRrYWlncm14dWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM1Njk2ODIsImV4cCI6MjAxOTE0NTY4Mn0.smS3iIzKfDRb-uyxhEaqapBiWwtJ7LTiUd9JZ2t8XkM')
+
+  console.log('Supabase Instance: ', supabase)
+  // ...
+</script>
 
 </head>
 
