@@ -153,7 +153,7 @@ async function handle_buyOrder() {
   }
   
   const total = document.querySelector(".total-price").innerHTML;
-  const response = await fetch('https://wakarecart.vercel.app/assets/api/store-order.js', {
+  const response = await fetch('https://eoc8xl4cb8i41nt.m.pipedream.net', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
