@@ -147,13 +147,14 @@ function CartBoxComponent(title, price, imgSrc) {
 
 
 async function handle_buyOrder() {
-  if (itemsAdded.length <= 0) {
+ if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
     return;
-  }
+ }
   
-  const total = document.querySelector(".total-price").innerHTML;
-  const response = await fetch('https://eoc8xl4cb8i41nt.m.pipedream.net', {
+ const total = document.querySelector(".total-price").innerHTML;
+  
+ const response = await fetch('https://eoc8xl4cb8i41nt.m.pipedream.net', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -162,17 +163,16 @@ async function handle_buyOrder() {
       items: itemsAdded,
       total: total,
     }),
-  });
+ });
 
-  if (response.ok) {
+ if (response.ok) {
     const cartContent = document.querySelector(".cart-content");
     cartContent.innerHTML = "";
     alert("Your Order is Placed Successfully :)");
     itemsAdded = [];
 
     update();
-  } else {
+ } else {
     alert('Error placing the order. Please try again.');
-  }
+ }
 }
-
