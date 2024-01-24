@@ -61,18 +61,19 @@ let itemsAdded = [];
 function handle_addCartItem() {
   let product = this.parentElement;
   let title = product.querySelector(".product-title").innerHTML;
-  let price = product.querySelector(".product-price").innerHTML;
+  let price = parseFloat(product.querySelector(".product-price").innerHTML.replace("$", ""));
   let imgSrc = product.querySelector(".product-img").src;
   console.log(title, price, imgSrc);
 
   let newToAdd = {
-    title,
-    price,
-    imgSrc,
+    productName: title,
+    price: price,
+    quantity: 1,
+    imgSrc: imgSrc
   };
 
   // handle item is already exist
-  if (itemsAdded.find((el) => el.title == newToAdd.title)) {
+  if (itemsAdded.find((el) => el.productName == newToAdd.productName)) {
     alert("This Item Is Already Exist!");
     return;
   } else {
@@ -88,7 +89,6 @@ function handle_addCartItem() {
 
   update();
 }
-
 function handle_removeCartItem() {
   this.parentElement.remove();
   itemsAdded = itemsAdded.filter(
