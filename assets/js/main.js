@@ -161,7 +161,7 @@ async function handle_buyOrder() {
   const productData = itemsAdded.map(item => `${item.productName}:${item.quantity}`);
 
   // Construct URL
-  const url = `https://script.google.com/macros/s/AKfycbySrajSTGXreplr1OW2504FwoLGzRvfPqRgPGX3IAKVTgHEOcoXZkiQiUhYXkO6W9w1/exec"Value1=${uuid}&Value2=${time}&Value33=${name}-${phone}-${email}&column4=${productData.join('&')}&column5=${grandTotal}`;
+  const url = `https://script.google.com/macros/s/AKfycbySrajSTGXreplr1OW2504FwoLGzRvfPqRgPGX3IAKVTgHEOcoXZkiQiUhYXkO6W9w1/exec?Value1=${uuid}&Value2=${time}&Value3=${name}-${phone}-${email}&column4=${productData.join('&')}&column5=${grandTotal}`;
 
   // Send GET request
   const response = await fetch(url, {
