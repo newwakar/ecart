@@ -105,10 +105,10 @@ function handle_changeItemQuantity() {
   update();
 }
 
-let total = 0;
+let total;
 
-// =========== UPDATE & RERENDER FUNCTIONS =========
-function update() {
+// ============= UPDATE & RERENDER FUNCTIONS ===========
+function updateTotal() {
   let cartBoxes = document.querySelectorAll(".cart-box");
   const totalElement = cart.querySelector(".total-price");
   total = 0;
@@ -127,6 +127,9 @@ function update() {
   totalElement.innerHTML = "$" + total;
 }
 
+// ============= HANDLE EVENTS FUNCTIONS =============
+let itemsAdded = [];
+
 // ============= HTML COMPONENTS =============
 function CartBoxComponent(title, price, imgSrc) {
   return `
@@ -141,6 +144,8 @@ function CartBoxComponent(title, price, imgSrc) {
         <i class='bx bxs-trash-alt cart-remove'></i>
     </div>`;
 }
+// ============= HANDLE EVENTS FUNCTIONS =============
+
 async function handle_buyOrder() {
   if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
