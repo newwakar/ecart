@@ -170,7 +170,7 @@ async function handle_buyOrder() {
   const productData = itemsAdded.map(item => `${item.imgSrc}:${item.productName}:${item.price}:${item.quantity}`);
 
   // Construct URL
-  const url = `https://script.google.com/macros/s/AKfycbySrajSTGXreplr1OW2504FwoLGzRvfPqRgPGX3IAKVTgHEOcoXZkiQiUhYXkO6W9w1/exec?Value1=${name}-${phone}-${email}&Value2=${productData.join('&')}&Value3=${total}`;
+  const url = `https://script.google.com/macros/s/AKfycbySrajSTGXreplr1OW2504FwoLGzRvfPqRgPGX3IAKVTgHEOcoXZkiQiUhYXkO6W9w1/exec?Value1=${name}-${phone}-${email}&Value2=${productData.join('@')}&Value3=${total}`;
 
   // Send GET request
   const response = await fetch(url, {
