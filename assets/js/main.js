@@ -99,16 +99,22 @@ function handle_removeCartItem() {
 
   update();
 }
-
 function handle_changeItemQuantity() {
   if (isNaN(this.value) || this.value < 1) {
     this.value = 1;
   }
   this.value = Math.floor(this.value); // to keep it integer
 
+  // update the quantity in the itemsAdded array
+  itemsAdded = itemsAdded.map((item) => {
+    if (item.productName == this.parentElement.querySelector(".cart-product-title").innerHTML) {
+      item.quantity = this.value;
+    }
+    return item;
+  });
+
   update();
 }
-
 let total;
 
 // ============= UPDATE & RERENDER FUNCTIONS ===========
