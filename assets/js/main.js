@@ -115,7 +115,7 @@ let total = 0;
 function updateTotal() {
   let cartBoxes = document.querySelectorAll(".cart-box");
   const totalElement = cart.querySelector(".total-price");
-  let total = 0;
+  total = 0;
   cartBoxes.forEach((cartBox) => {
     let priceElement = cartBox.querySelector(".cart-price");
     let price = parseFloat(priceElement.innerHTML.replace("$", ""));
