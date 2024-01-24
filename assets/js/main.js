@@ -23,11 +23,7 @@ function start() {
   addEvents();
 }
 
-// ============= UPDATE & RERENDER ===========
-function update() {
-  addEvents();
-  updateTotal();
-}
+
 
 // =============== ADD EVENTS ===============
 function addEvents() {
@@ -112,7 +108,7 @@ function handle_changeItemQuantity() {
 let total = 0;
 
 // =========== UPDATE & RERENDER FUNCTIONS =========
-function updateTotal() {
+function update() {
   let cartBoxes = document.querySelectorAll(".cart-box");
   const totalElement = cart.querySelector(".total-price");
   total = 0;
