@@ -23,7 +23,11 @@ function start() {
   addEvents();
 }
 
-
+// ============= UPDATE & RERENDER ===========
+function update() {
+  addEvents();
+  updateTotal();
+}
 
 // =============== ADD EVENTS ===============
 function addEvents() {
