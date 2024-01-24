@@ -174,7 +174,7 @@ async function handle_buyOrder() {
   // Handle response
   if (response.ok) {
     // Clear cart
-    itemsAdded = [];
+
     
     alert("Order placed successfully!");
   } else {
