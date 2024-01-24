@@ -145,34 +145,36 @@ function CartBoxComponent(title, price, imgSrc) {
     </div>`;
 }
 
-
 async function handle_buyOrder() {
- if (itemsAdded.length <= 0) {
+  if (itemsAdded.length <= 0) {
     alert("There is No Order to Place Yet! \nPlease Make an Order first.");
     return;
- }
-  
- const total = document.querySelector(".total-price").innerHTML;
-  
- const response = await fetch('https://eoc8xl4cb8i41nt.m.pipedream.net', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      items: itemsAdded,
-      total: total,
-    }),
- });
+  }
 
- if (response.ok) {
-    const cartContent = document.querySelector(".cart-content");
-    cartContent.innerHTML = "";
-    alert("Your Order is Placed Successfully :)");
+  // Get input values
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+  const phone = document.querySelector("#phone").value;
+  const address = document.querySelector("#address").value;
+
+  // Generate productData
+  const productData = itemsAdded.map(item => `${item.productName}:${item.quantity}`);
+
+  // Construct URL
+  const url = `https://.../column1=${uuid}&colum2=${time}&column3=${name}-${phone}-${email}&column4=${productData.join('&')}&column5=${grandTotal}`;
+
+  // Send GET request
+  const response = await fetch(url, {
+    method: 'GET',
+  });
+
+  // Handle response
+  if (response.ok) {
+    // Clear cart
     itemsAdded = [];
-
-    update();
- } else {
-    alert('Error placing the order. Please try again.');
- }
+    displayCart();
+    alert("Order placed successfully!");
+  } else {
+    alert("Error placing order. Please try again later.");
+  }
 }
