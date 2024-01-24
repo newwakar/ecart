@@ -109,6 +109,7 @@ function handle_changeItemQuantity() {
   update();
 }
 
+let total;
 
 // =========== UPDATE & RERENDER FUNCTIONS =========
 function updateTotal() {
