@@ -127,8 +127,6 @@ function updateTotal() {
   totalElement.innerHTML = "$" + total;
 }
 
-// ============= HANDLE EVENTS FUNCTIONS =============
-let itemsAdded = [];
 
 // ============= HTML COMPONENTS =============
 function CartBoxComponent(title, price, imgSrc) {
