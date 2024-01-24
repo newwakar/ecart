@@ -181,9 +181,9 @@ async function handle_buyOrder() {
   if (response.ok) {
     // Clear cart
     itemsAdded = [];
-    alert("Order placed successfully!", function() {
+    alert("Order placed successfully!");
     location.reload();
-    });
+  
   } else {
     alert("Error placing order. Please try again later.");
   }
