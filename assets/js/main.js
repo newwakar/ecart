@@ -61,7 +61,7 @@ let itemsAdded = [];
 function handle_addCartItem() {
   let product = this.parentElement;
   let title = product.querySelector(".product-title").innerHTML;
-  let price = parseFloat(product.querySelector(".product-price").innerHTML.replace("$", ""));
+  let price = parseFloat(product.querySelector(".product-price").innerHTML.replace("₹", ""));
   let imgSrc = product.querySelector(".product-img").src;
   console.log(title, price, imgSrc);
 
