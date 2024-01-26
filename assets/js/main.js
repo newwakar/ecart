@@ -167,10 +167,10 @@ async function handle_buyOrder() {
   const address = document.querySelector("#address").value;
 
   // Generate productData
-  const productData = itemsAdded.map(item => `${item.imgSrc}:${item.productName}:${item.price}:${item.quantity}`);
+  const productData = itemsAdded.map(item => `${item.imgSrc}~${item.productName}~${item.price}~${item.quantity}`);
 
   // Construct URL
-  const url = `https://script.google.com/macros/s/AKfycbx9LQwszogZ4C3GxRqWlub6CcBLwPenO-AzPEbU5lgoBuKJjzUq5us1P68NzDPZCEM/exec?value1=${name}-${phone}-${email}-${address}&value2=${productData.join('@')}&value3=${total}`;
+  const url = `https://script.google.com/macros/s/AKfycbx9LQwszogZ4C3GxRqWlub6CcBLwPenO-AzPEbU5lgoBuKJjzUq5us1P68NzDPZCEM/exec?value1=${name}-${phone}-${email}-${address}&value2=${productData.join('*')}&value3=${total}`;
 
   // Send GET request
   const response = await fetch(url, {
